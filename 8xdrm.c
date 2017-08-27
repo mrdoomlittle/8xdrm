@@ -1,10 +1,16 @@
 # include "8xdrm.h"
-void _8xdrm_init(struct _8xdrm *__8xdrm, mdl_u8_t (*__get_byte)(void*), void (*__put_byte)(mdl_u8_t, void*)) {
-	__8xdrm->has_leftovers = 0;
-	__8xdrm->byte_out = 0;
-	__8xdrm->bits_needed = 8;
-	__8xdrm->get_byte = __get_byte;
-	__8xdrm->put_byte = __put_byte;
+void _8xdrm_init(struct _8xdrm *__8xdrm, mdl_u8_t(*__get_byte)(void*), void(*__put_byte)(mdl_u8_t, void*)) {
+	*__8xdrm = (struct _8xdrm) {
+		.get_byte = __get_byte,
+		.put_byte = __put_byte,
+		.get_arg = NULL,
+		.put_arg = NULL,
+		.leftover = 0,
+		.bit_c = 0,
+		.has_leftovers = 0,
+		.bits_needed = 8,
+		.byte_out = 0
+	};
 }
 
 mdl_u8_t w1_msb = 0x80;

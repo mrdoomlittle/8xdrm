@@ -1,6 +1,7 @@
 # ifndef __8xdrm__h
 # define __8xdrm__h
 # include <eint_t.h>
+# include <stdlib.h>
 struct _8xdrm {
 	mdl_u8_t (*get_byte)(void*);
 	void (*put_byte)(mdl_u8_t, void*);
@@ -15,7 +16,7 @@ struct _8xdrm {
 	mdl_u8_t byte_out;
 };
 
-void _8xdrm_init(struct _8xdrm*, mdl_u8_t (*)(void*), void (*)(mdl_u8_t, void*));
+void _8xdrm_init(struct _8xdrm*, mdl_u8_t(*)(void*), void(*)(mdl_u8_t, void*));
 void _8xdrm_put_wx(struct _8xdrm*, mdl_u8_t, mdl_u8_t);
 mdl_u8_t _8xdrm_get_wx(struct _8xdrm*, mdl_u8_t);
 void _8xdrm_dump(struct _8xdrm*);
