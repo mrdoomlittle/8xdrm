@@ -1,6 +1,6 @@
 # ifndef __8xdrm__h
 # define __8xdrm__h
-# include <eint_t.h>
+# include <mdlint.h>
 # include <stdlib.h>
 struct _8xdrm {
 	mdl_u8_t (*get_byte)(void*);

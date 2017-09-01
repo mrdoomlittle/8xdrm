@@ -1,5 +1,4 @@
 # include "8xdrm.h"
-
 # include <stdio.h>
 mdl_u8_t buff[4] = {0b11011000, 0b10110001, 0x0, 0x0};
 mdl_u8_t c = 0;
