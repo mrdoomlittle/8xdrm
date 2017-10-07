@@ -29,6 +29,6 @@ int main(void) {
 //	_8xdrm_put_wx(&_8xdrm, 0b10010010, 8);
 //	_8xdrm_dump(&_8xdrm);
 	
-	print_bin(_8xdrm_get_wx(&_8xdrm, 8));
-	print_bin(_8xdrm_get_wx(&_8xdrm, 8));
+	print_bin(_8xdrm_get_lx(&_8xdrm, 8));
+	print_bin(_8xdrm_get_lx(&_8xdrm, 8));
 }
