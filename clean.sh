@@ -1,1 +1,1 @@
-rm -f *.o main inc/*.h lib/*.a
+rm -f *.o main inc/mdl/*.h lib/*.a

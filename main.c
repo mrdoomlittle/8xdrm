@@ -1,6 +1,6 @@
-# include "8xdrm.h"
+# include "bitct.h"
 # include <stdio.h>
-mdl_u8_t buff[4] = {0b11011000, 0b10110001, 0x0, 0x0};
+mdl_u8_t buff[4] = {0x0, 0x0, 0x0, 0x0};
 mdl_u8_t c = 0;
 mdl_u8_t get_byte(void *__arg) {
 	c++;
@@ -19,16 +19,24 @@ void put_byte(mdl_u8_t __byte, void *__arg) {
 }
 
 int main(void) {
-	struct _8xdrm _8xdrm;
+	struct bitct _bitct;
 
-//	_8xdrm.put_byte = &put_byte;
-//	_8xdrm.get_byte = &get_byte;
-	_8xdrm_init(&_8xdrm, &get_byte, &put_byte);
+//	_bitct.put_byte = &put_byte;
+//	_bitct.get_byte = &get_byte;
+	bitct_init(&_bitct, &get_byte, &put_byte);
 
-//	_8xdrm_put_wx(&_8xdrm, 0b11010010, 8);
-//	_8xdrm_put_wx(&_8xdrm, 0b10010010, 8);
-//	_8xdrm_dump(&_8xdrm);
+	bitct_put_lx(&_bitct, 0b00000010, 2);
+	bitct_put_lx(&_bitct, 0b00000010, 2);
+	bitct_put_lx(&_bitct, 0b00000010, 2);
+	bitct_put_lx(&_bitct, 0b00000010, 1);
+	bitct_put_lx(&_bitct, 0b10000010, 8);
+	bitct_dump(&_bitct);
+	print_bin(buff[0]);
+	print_bin(buff[1]);
+//	_bitct_put_wx(&_bitct, 0b11010010, 8);
+//	_bitct_put_wx(&_bitct, 0b10010010, 8);
+//	_bitct_dump(&_bitct);
 	
-	print_bin(_8xdrm_get_lx(&_8xdrm, 8));
-	print_bin(_8xdrm_get_lx(&_8xdrm, 8));
+//	print_bin(bitct_get_lx(&_bitct, 8));
+//	print_bin(bitct_get_lx(&_bitct, 8));
 }

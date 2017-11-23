@@ -1,6 +1,6 @@
-gcc -c -std=c11 $1 -o 8xdrm.o 8xdrm.c
-ar rc lib/lib8xdrm.a 8xdrm.o
-cp 8xdrm.h inc
+gcc -c -std=c11 $1 -o bitct.o bitct.c
+ar rc lib/libmdl-bitct.a bitct.o
+cp bitct.h inc/mdl
 
 
-gcc -std=c11 $1 -o main main.c 8xdrm.o
+gcc -std=c11 $1 -o main main.c bitct.o
