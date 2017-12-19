@@ -1,9 +1,17 @@
-CFLAGS=-I/usr/local/include
-ARC=-DARC64
-F_CPU=16000000UL
-DEVICE=atmega328p
+ifndef inc_flags
+ inc_flags=-I/usr/local/include
+endif
+ifndef arc
+ arc=arc64
+endif
+ifndef f_cpu
+ f_cpu=16000000UL
+endif
+ifndef device
+ device=atmega328p
+endif
 all:
-	avr-gcc -c -g $(ARC) $(CFLAGS) -D__AVR -std=c11 -DF_CPU=$(F_CPU) -Os -mmcu=$(DEVICE) -o bitct.o bitct.c
+	avr-gcc -c -g -D__$(arc) $(inc_flags) -std=c11 -DF_CPU=$(f_cpu) -Os -mmcu=$(device) -o bitct.o bitct.c
 	ar rc lib/libmdl-bitct.a bitct.o
 	cp bitct.h inc/mdl
 clean:
